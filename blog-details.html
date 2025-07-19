@@ -236,7 +236,7 @@
             <span>By ${escapeHTML(blog.author)}</span> &nbsp;|&nbsp;
             <span>${blog.createdAt?.seconds ? new Date(blog.createdAt.seconds * 1000).toLocaleDateString() : ''}</span>
           </div>
-          <h1 class="blog-details-title">${escapeHTML(blog.title)}</h1>
+          <h2 class="blog-details-title">${escapeHTML(blog.title)}</h2>
           <div class="blog-details-content">${contentHtml}</div>
           <div class="blog-details-share">
             <span>Share:</span>
