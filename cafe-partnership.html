@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<!-- 
+EmailJS Setup Instructions:
+1. Sign up at https://www.emailjs.com/
+2. Create a new Email Service (Gmail, Outlook, etc.)
+3. Create an email template with the following variables:
+   - to_email
+   - from_name
+   - from_email
+   - phone
+   - company
+   - location
+   - investment_size
+   - partnership_type
+   - previous_investment
+   - linkedin
+   - website
+   - message
+4. Replace the following in the JavaScript:
+   - YOUR_PUBLIC_KEY with your EmailJS public key
+   - YOUR_SERVICE_ID with your EmailJS service ID
+   - YOUR_TEMPLATE_ID with your EmailJS template ID
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Form - ColabEsports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #DF2A00;
+            --secondary: #ff2d75;
+            --dark: #0f0e17;
+            --light: #f8f8ff;
+            --success: #00ff88;
+            --warning: #ffd700;
+            --danger: #ff3860;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #000000;
+            color: var(--light);
+            background-image: 
+               radial-gradient(circle at 10% 20%, rgba(200, 136, 17, 0.27) 0%, transparent 40%),
+               radial-gradient(circle at 90% 80%, rgba(188, 25, 25, 0.229) 0%, transparent 40%);
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 80px;
+        }
+
+        .investor-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 15px;
+            border: 1px solid rgba(223, 42, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #FFA700 0%, #DF2A00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .form-header p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Poppins', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(223, 42, 0, 0.2);
+        }
+
+        .investment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .investment-option {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .investment-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .investment-option.selected {
+            border-color: var(--primary);
+            background: rgba(223, 42, 0, 0.1);
+        }
+
+        .file-upload {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #FFA700 0%, #DF2A00 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 42, 0, 0.3);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .cafe-form-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .form-header h1 {
+                font-size: 2rem;
+            }
+
+            .investment-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Layout1 -->
+    <header id="header" class="vs-header">
+        <!-- Your existing header code -->
+    </header>
+
+    <div class="investor-form-container">
+        <div class="form-header">
+            <h1>💼 Investor Application</h1>
+            <p>Join India's fastest-growing esports ecosystem and be part of the gaming revolution</p>
+        </div>
+
+        <form id="investorForm" onsubmit="handleSubmit(event)">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label class="form-label" for="fullName">Full Name *</label>
+                <input type="text" id="fullName" class="form-input" required>
+                <div class="error-message" id="fullNameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" class="form-input" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-input" pattern="[0-9]{10}" required>
+                <div class="error-message" id="phoneError"></div>
+            </div>
+
+            <!-- Business Information -->
+            <div class="form-group">
+                <label class="form-label" for="companyName">Company/Organization Name *</label>
+                <input type="text" id="companyName" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="designation">Designation/Role *</label>
+                <input type="text" id="designation" class="form-input" required>
+            </div>
+
+            <!-- Investment Details -->
+            <div class="form-group">
+                <label class="form-label">Preferred Investment Size *</label>
+                <div class="investment-options">
+                    <div class="investment-option" data-value="25-50L">
+                        <h4>₹25 - 50 Lakhs</h4>
+                        <p>Seed Investment</p>
+                    </div>
+                    <div class="investment-option" data-value="50L-1Cr">
+                        <h4>₹50 Lakhs - 1 Crore</h4>
+                        <p>Growth Investment</p>
+                    </div>
+                    <div class="investment-option" data-value="1Cr+">
+                        <h4>₹1 Crore+</h4>
+                        <p>Strategic Investment</p>
+                    </div>
+                </div>
+                <input type="hidden" id="investmentSize" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Have you invested in gaming/esports before? *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="previousInvestment" value="yes" required>
+                        <span>Yes</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="previousInvestment" value="no" required>
+                        <span>No</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Investment Type *</label>
+                <div class="investment-options">
+                    <div class="investment-option" data-type="equity">
+                        <h4>Equity Investment</h4>
+                        <p>Direct ownership stake</p>
+                    </div>
+                    <div class="investment-option" data-type="strategic">
+                        <h4>Strategic Partnership</h4>
+                        <p>Business collaboration</p>
+                    </div>
+                    <div class="investment-option" data-type="venture">
+                        <h4>Venture Capital</h4>
+                        <p>Growth funding</p>
+                    </div>
+                </div>
+                <input type="hidden" id="partnershipType" required>
+            </div>
+
+            <!-- Social & Web Presence -->
+            <div class="form-group">
+                <label class="form-label" for="linkedin">LinkedIn Profile URL</label>
+                <input type="url" id="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="website">Website URL</label>
+                <input type="url" id="website" class="form-input" placeholder="https://example.com">
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-group">
+                <label class="form-label" for="message">Why are you interested in partnering with us? *</label>
+                <textarea id="message" class="form-input" rows="4" required></textarea>
+            </div>
+
+            <!-- File Uploads -->
+            <div class="form-group">
+                <label class="form-label">Upload Investment Profile (PDF) *</label>
+                <div class="file-upload">
+                    <div class="file-upload-icon">📄</div>
+                    <p>Click or drag to upload your investment profile</p>
+                    <input type="file" id="investmentProfile" accept=".pdf" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Upload Due Diligence Documents (PDF)</label>
+                <div class="file-upload">
+                    <div class="file-upload-icon">🎯</div>
+                    <p>Click or drag to upload additional documents</p>
+                    <input type="file" id="dueDiligence" accept=".pdf">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS
+            emailjs.init("cotLBdgPdj0OzSPrR");
+            // Investment options selection
+            const investmentOptions = document.querySelectorAll('.investment-option');
+            
+            investmentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options in the same group
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.investment-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Set the hidden input value
+                    if (this.dataset.value) {
+                        document.getElementById('investmentSize').value = this.dataset.value;
+                    }
+                    if (this.dataset.type) {
+                        document.getElementById('partnershipType').value = this.dataset.type;
+                    }
+                });
+            });
+
+            // File upload handling
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function(e) {
+                    const fileName = e.target.files[0]?.name;
+                    if (fileName) {
+                        const uploadDiv = this.parentElement;
+                        const p = uploadDiv.querySelector('p');
+                        p.textContent = fileName;
+                    }
+                });
+            });
+        });
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Uploading Files...';
+            submitBtn.disabled = true;
+
+            submitBtn.innerHTML = 'Sending Application...';
+
+            // Prepare template parameters to match the template structure
+            const templateParams = {
+                to_email: "business@colabplatforms.com", // The email where you want to receive applications
+                from_name: fullName,
+                reply_to: email,
+                message: {
+                    phone: phone,
+                    company: document.getElementById('companyName').value,
+                    designation: document.getElementById('designation').value,
+                    investment_size: document.getElementById('investmentSize').value,
+                    investment_type: document.getElementById('partnershipType').value,
+                    previous_investment: document.querySelector('input[name="previousInvestment"]:checked').value,
+                    linkedin: document.getElementById('linkedin').value || 'Not provided',
+                    website: document.getElementById('website').value || 'Not provided',
+                    message: document.getElementById('message').value,
+                    investment_profile: document.getElementById('investmentProfile').files[0]?.name || 'Not uploaded',
+                    due_diligence: document.getElementById('dueDiligence').files[0]?.name || 'Not uploaded'
+                }
+            };
+
+            // Send email using EmailJS free service
+            console.log('Sending email with params:', templateParams);
+            emailjs.send(
+                'service_2je9nh6', // Your EmailJS service ID
+                'template_5bxsrpo', // Your EmailJS template ID
+                templateParams
+            ).then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showSuccessMessage();
+            }, function(error) {
+                console.error('FAILED...', error);
+                showErrorMessage(error);
+                // Reset button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        function validateForm() {
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(err => {
+                err.style.display = 'none';
+            });
+
+            // Validate email
+            const email = document.getElementById('email');
+            if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate phone
+            const phone = document.getElementById('phone');
+            if (!phone.value.match(/^[0-9]{10}$/)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid 10-digit phone number';
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate required selections
+            if (!document.getElementById('investmentSize').value) {
+                isValid = false;
+                alert('Please select an investment size');
+            }
+
+            if (!document.getElementById('partnershipType').value) {
+                isValid = false;
+                alert('Please select a partnership type');
+            }
+
+            return isValid;
+        }
+
+        function generateEmailBody(formData) {
+            return `
+                <h2>New Investor Application</h2>
+                <h3>Personal Information</h3>
+                <p><strong>Name:</strong> ${formData.get('fullName')}</p>
+                <p><strong>Email:</strong> ${formData.get('email')}</p>
+                <p><strong>Phone:</strong> ${formData.get('phone')}</p>
+
+                <h3>Business Information</h3>
+                <p><strong>Company Name:</strong> ${formData.get('companyName')}</p>
+                <p><strong>Location:</strong> ${formData.get('location')}</p>
+                <p><strong>Investment Size:</strong> ${formData.get('investmentSize')}</p>
+                <p><strong>Partnership Type:</strong> ${formData.get('partnershipType')}</p>
+                <p><strong>Previous Gaming Investment:</strong> ${formData.get('previousInvestment')}</p>
+
+                <h3>Additional Information</h3>
+                <p><strong>LinkedIn:</strong> ${formData.get('linkedin')}</p>
+                <p><strong>Website:</strong> ${formData.get('website')}</p>
+                <p><strong>Message:</strong> ${formData.get('message')}</p>
+            `;
+        }
+
+        function showSuccessMessage() {
+            const form = document.getElementById('investorForm');
+            form.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <h2 style="color: var(--success);">Investment Application Submitted Successfully! 💼</h2>
+                    <p>Thank you for your interest in investing with ColabEsports. Our team will review your application and contact you shortly.</p>
+                    <button onclick="window.location.href='index.html'" class="submit-btn" style="margin-top: 1rem;">
+                        Return to Home
+                    </button>
+                </div>
+            `;
+        }
+
+        function showErrorMessage(error) {
+            console.error('Form submission error:', error);
+            const errorMessage = error ? `Error: ${error}` : 'There was an error submitting your application. Please try again later.';
+            alert(errorMessage);
+            
+            // Log details to console for debugging
+            console.log('Template Parameters:', templateParams);
+            console.log('Service ID:', 'service_2je9nh6');
+            console.log('Template ID:', 'template_5bxsrpo');
+        }
+    </script>
+</body>
+</html>
