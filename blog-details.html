@@ -5,6 +5,161 @@
   <meta charset="utf-8">
   <title>ColabEsports Blog Details</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Read detailed esports insights, gaming strategies, and tournament updates on ColabEsports. Expert analysis of CS2, Valorant, BGMI, and more Indian esports content.">
+  <meta name="keywords" content="esports blog, gaming insights, tournament analysis, CS2 strategies, Valorant tips, BGMI guides, Indian esports, ColabEsports blog">
+  <meta name="author" content="ColabEsports">
+  <meta name="robots" content="index, follow">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ColabEsports Blog - Detailed Gaming Insights & Esports Analysis">
+  <meta property="og:description" content="Read detailed esports insights, gaming strategies, and tournament updates on ColabEsports. Expert analysis of CS2, Valorant, BGMI, and more Indian esports content.">
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+  <meta property="og:url" content="https://colabesports.com/blog-details.html">
+  <meta property="og:site_name" content="ColabEsports">
+  <meta property="article:publisher" content="https://colabesports.com">
+  <meta property="article:section" content="Esports">
+  <meta property="article:tag" content="esports, gaming, tournaments, strategies">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@colabesports">
+  <meta name="twitter:title" content="ColabEsports Blog - Detailed Gaming Insights & Esports Analysis">
+  <meta name="twitter:description" content="Read detailed esports insights, gaming strategies, and tournament updates on ColabEsports. Expert analysis of CS2, Valorant, BGMI, and more Indian esports content.">
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+  <meta name="twitter:creator" content="@colabesports">
+
+  <!-- Schema.org Article Markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://colabesports.com/blog-details.html"
+      },
+      "headline": "Detailed Gaming Insights & Esports Analysis",
+      "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614",
+      "datePublished": "2025-07-19T00:00:00+00:00",
+      "dateModified": "2025-07-19T00:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "ColabEsports",
+        "url": "https://colabesports.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ColabEsports",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+        }
+      },
+      "description": "Read detailed esports insights, gaming strategies, and tournament updates on ColabEsports. Expert analysis of CS2, Valorant, BGMI, and more Indian esports content."
+    }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://colabesports.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://colabesports.com/blog.html"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Blog Details",
+        "item": "https://colabesports.com/blog-details.html"
+      }]
+    }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ColabEsports",
+      "url": "https://colabesports.com",
+      "logo": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614",
+      "sameAs": [
+        "https://twitter.com/colabesports",
+        "https://www.instagram.com/colabesports/",
+        "https://www.youtube.com/channel/UCPq_-QWa4TcuKP7OQozotOA",
+        "https://discord.com/channels/1384163322303348947/1384163323397935217",
+        "https://steamcommunity.com/profiles/76561199867149445/",
+        "https://www.reddit.com/user/ColabEsports/"
+      ]
+    }
+  </script>
+
+  <!-- Dynamic Meta Tags Update Script -->
+  <script>
+    // This script will update meta tags based on the actual blog content
+    document.addEventListener('DOMContentLoaded', function() {
+      const updateMetaTags = (blog) => {
+        if (!blog) return;
+        
+        // Update standard meta tags
+        document.title = `${blog.title} - ColabEsports Blog`;
+        document.querySelector('meta[name="description"]').content = blog.description;
+        
+        // Update OpenGraph tags
+        document.querySelector('meta[property="og:title"]').content = blog.title;
+        document.querySelector('meta[property="og:description"]').content = blog.description;
+        if (blog.imageUrl) {
+          document.querySelector('meta[property="og:image"]').content = blog.imageUrl;
+        }
+        
+        // Update Twitter Card tags
+        document.querySelector('meta[name="twitter:title"]').content = blog.title;
+        document.querySelector('meta[name="twitter:description"]').content = blog.description;
+        if (blog.imageUrl) {
+          document.querySelector('meta[name="twitter:image"]').content = blog.imageUrl;
+        }
+        
+        // Update Article Schema
+        const articleSchema = document.querySelector('script[type="application/ld+json"]');
+        if (articleSchema) {
+          const schema = JSON.parse(articleSchema.textContent);
+          schema.headline = blog.title;
+          schema.description = blog.description;
+          if (blog.imageUrl) {
+            schema.image = blog.imageUrl;
+          }
+          if (blog.createdAt) {
+            schema.datePublished = new Date(blog.createdAt.seconds * 1000).toISOString();
+            schema.dateModified = new Date(blog.createdAt.seconds * 1000).toISOString();
+          }
+          articleSchema.textContent = JSON.stringify(schema);
+        }
+      };
+
+      // Hook into your existing blog loading logic
+      const originalShowBlogDetails = window.showBlogDetails;
+      if (originalShowBlogDetails) {
+        window.showBlogDetails = async function() {
+          const result = await originalShowBlogDetails();
+          if (result && result.blog) {
+            updateMetaTags(result.blog);
+          }
+          return result;
+        };
+      }
+    });
+  </script>
+
   <!-- Your CSS links here -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
@@ -13,6 +168,7 @@
     .blog-details-container { max-width: 800px; margin: 40px auto; background: #141414; border-radius: 16px; box-shadow: 0 8px 32px #0005; padding: 32px 24px; }
     .blog-details-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
     .blog-details-title { font-size: 2.2rem; color: #ffa700; margin-bottom: 12px; }
+    .seo-heading { display: none; }
     .blog-details-meta { color: #aaa; margin-bottom: 18px; }
     .blog-details-content { font-size: 1.15rem; line-height: 1.7; color: #fff; }
     .blog-details-share { margin-top: 32px; }
@@ -21,6 +177,8 @@
 </head>
 <body>
   <div class="blog-details-container" id="blogDetailsContainer">
+    <h1 class="seo-heading">ColabEsports Blog Details - Gaming Insights & Esports Analysis</h1>
+    <h2 class="seo-heading">Detailed Esports Content and Gaming Strategies</h2>
     <p>Loading...</p>
   </div>
 
