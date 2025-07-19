@@ -462,7 +462,7 @@ padding-top: 100px;
     }
   </style>
 
-  <h1 class="seo-heading">Indian Gaming Blogs & Esports News - ColabEsports</h1>
+
   <h2 class="seo-heading">Latest Esports Updates, Gaming Strategies & Community Content</h2>
 
   <!--==============================
@@ -1298,7 +1298,7 @@ snapshot.forEach(docSnap => {
 
   html += `
     <div class="blog-card">
-      <h1><a href="blog-details.html?id=${id}">${blog.title}</a></h1>
+      <h2><a href="blog-details.html?id=${id}">${blog.title}</a></h2>
       <small>By ${blog.author} • ${new Date(blog.createdAt?.seconds * 1000).toLocaleDateString()}</small>
       <p>${blog.description.substring(0, 120)}...</p>
       <a href="blog-details.html?id=${id}">Read More →</a>
