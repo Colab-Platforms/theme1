@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>ColabEsports </title>
+ <title>Indian Gaming Blogs & Esports News | Colab Esports</title>
   <meta name="author" content="ColabEsports">
-  <meta name="description" content="ColabEsports">
-  <meta name="keywords" content="ColabEsports">
+ <meta name="description" content="Explore top Indian esports blogs, gaming news, memes & pro tips. Stay updated with Colab Esports on CS2, Valorant, BGMI & more.">
+ <meta name="keywords" content="Indian gaming blogs, esports news India, Colab Esports, CS2 esports blog, Valorant India news, BGMI esports updates, Free Fire tournaments India, how to become pro gamer India, online gaming news, esports Discord India, gaming memes India, esports content platform, Indian gamers community">
   <meta name="robots" content="INDEX,FOLLOW">
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -79,6 +79,18 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Esports Blogs & Gaming News India | Colab Esports">
+<meta name="twitter:description" content="Get the latest in Indian esports—from CS2 and Valorant to BGMI. Tips, memes & more.">
+<meta name="twitter:image" content="https://colabesports.com/assets/images/blogs-og.jpg">
+
+  <meta property="og:title" content="Indian Gaming Blogs & Esports News | Colab Esports">
+<meta property="og:description" content="Read expert esports blogs, memes & match updates. Join India’s top gaming community at Colab Esports.">
+<meta property="og:image" content="https://colabesports.com/assets/images/blogs-og.jpg">
+<meta property="og:url" content="https://colabesports.com/blogs.html">
+<meta property="og:type" content="website">
+
+
   <!--==============================
 	  Google Fonts
 	============================== -->
@@ -357,6 +369,20 @@ padding-top: 100px;
   display: block;
   border-radius: 0;
 }
+
+/* Mobile devices (phones) */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .nav {
+    flex-direction: column;
+  }
+}
+
+
+
     </style>
 
 </head>
@@ -376,7 +402,7 @@ padding-top: 100px;
  <div class="preloader">
     <button class="vs-btn preloaderCls">Colab Esport </button>
     <div class="preloader-inner">   <!-- loader -->
-      <img src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612" alt="colabesports" width="185" height="auto">
+      <img src="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-White_KB_1.png?v=1750315800" alt="colabesports" width="185" height="auto">
       <span class="loader"></span>
     </div>
   </div>
@@ -384,6 +410,7 @@ padding-top: 100px;
 		Mobile Menu
 	============================== -->
   <div class="vs-menu-wrapper">
+    
     <div class="vs-menu-area text-center">
       <div class="mobile-logo">
         <a href="index.html"><img src="assets/img/logo.svg" alt="ColabEsports" class="logo"></a>
@@ -1202,7 +1229,7 @@ snapshot.forEach(docSnap => {
 
   html += `
     <div class="blog-card">
-      <h2><a href="blog-details.html?id=${id}">${blog.title}</a></h2>
+      <h1><a href="blog-details.html?id=${id}">${blog.title}</a></h1>
       <small>By ${blog.author} • ${new Date(blog.createdAt?.seconds * 1000).toLocaleDateString()}</small>
       <p>${blog.description.substring(0, 120)}...</p>
       <a href="blog-details.html?id=${id}">Read More →</a>
