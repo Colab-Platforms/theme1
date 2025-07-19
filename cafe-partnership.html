@@ -1,31 +1,364 @@
-<!DOCTYPE html>
-<!-- 
-EmailJS Setup Instructions:
-1. Sign up at https://www.emailjs.com/
-2. Create a new Email Service (Gmail, Outlook, etc.)
-3. Create an email template with the following variables:
-   - to_email
-   - from_name
-   - from_email
-   - phone
-   - company
-   - location
-   - investment_size
-   - partnership_type
-   - previous_investment
-   - linkedin
-   - website
-   - message
-4. Replace the following in the JavaScript:
-   - YOUR_PUBLIC_KEY with your EmailJS public key
-   - YOUR_SERVICE_ID with your EmailJS service ID
-   - YOUR_TEMPLATE_ID with your EmailJS template ID
--->
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Form - ColabEsports</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+ <title>Café Partnership Program | Launch Esports Gaming Cafés in India with ColabEsports</title>
+  <meta name="author" content="ColabEsports">
+ <meta name="description" content="Partner with ColabEsports to launch esports-ready gaming cafés in India. Boost revenue with CS2, and CS-2 matches, tournaments, and leaderboard-based rewards.">
+  <meta name="keywords" content="Indian gaming blogs, esports news India, Colab Esports, CS2 esports blog, CS-2 India news, CS-2 esports updates, CS-2 tournaments India, how to become pro gamer India, online gaming news, esports Discord India, gaming memes India, esports content platform, Indian gamers community">
+  <meta name="robots" content="index, follow">
+  
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Indian Gaming Blogs & Esports News | Colab Esports">
+  <meta property="og:description" content="Explore top Indian esports blogs, gaming news, memes & pro tips. Stay updated with Colab Esports on CS2, Valorant, BGMI & more.">
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+  <meta property="og:url" content="https://colabesports.com/blog.html">
+  <meta property="og:site_name" content="ColabEsports">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@colabesports">
+  <meta name="twitter:title" content="Indian Gaming Blogs & Esports News | Colab Esports">
+  <meta name="twitter:description" content="Explore top Indian esports blogs, gaming news, memes & pro tips. Stay updated with Colab Esports on CS2, Valorant, BGMI & more.">
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+  <meta name="twitter:creator" content="@colabesports">
+  
+  <!-- Schema.org WebPage Markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Indian Gaming Blogs & Esports News",
+      "description": "Explore top Indian esports blogs, gaming news, memes & pro tips. Stay updated with Colab Esports on CS2, Valorant, BGMI & more.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ColabEsports",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+        }
+      }
+    }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://colabesports.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://colabesports.com/blog.html"
+      }]
+    }
+  </script>
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicons - Place favicon.ico in the root directory -->
+   <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-09.png?v=1749895612"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+    />
+  <link rel="manifest" href="assets/img/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Esports Blogs & Gaming News India | Colab Esports">
+<meta name="twitter:description" content="Get the latest in Indian esports—from CS2 and Valorant to BGMI. Tips, memes & more.">
+<meta name="twitter:image" content="https://colabesports.com/assets/images/blogs-og.jpg">
+
+  <meta property="og:title" content="Indian Gaming Blogs & Esports News | Colab Esports">
+<meta property="og:description" content="Read expert esports blogs, memes & match updates. Join India’s top gaming community at Colab Esports.">
+<meta property="og:image" content="https://colabesports.com/assets/images/blogs-og.jpg">
+<meta property="og:url" content="https://colabesports.com/blogs.html">
+<meta property="og:type" content="website">
+
+
+  <!--==============================
+	  Google Fonts
+	============================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <!--==============================
+	    All CSS File
+	============================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Fontawesome Icon -->
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+  <!-- Slick Slider -->
+  <link rel="stylesheet" href="assets/css/slick.min.css">
+  <!-- Animation CSS -->
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+ <!-- Custom Cursor CSS -->
+ <link rel="stylesheet" href="assets/css/custom-cursor.min.css">
+  
+  <!-- Theme Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Schema.org Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://colabesports.com/#organization",
+      "name": "ColabEsports",
+      "alternateName": "Colab Esports",
+      "description": "India's leading esports platform offering gaming café partnerships, investment opportunities, tournaments, and comprehensive business support for gaming entrepreneurs.",
+      "url": "https://colabesports.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://colabesports.com/assets/img/logo.svg",
+        "width": 300,
+        "height": 100
+      },
+      "image": "https://colabesports.com/assets/img/logo.svg",
+      "sameAs": [
+        "https://facebook.com/ColabEsports",
+        "https://twitter.com/ColabEsports",
+        "https://instagram.com/ColabEsports",
+        "https://linkedin.com/company/colabesports",
+        "https://youtube.com/c/ColabEsports"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-11-XXXX-XXXX",
+        "contactType": "Business Development",
+        "email": "business@colabesports.com",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Hindi"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "India",
+        "addressRegion": "Delhi",
+        "addressLocality": "New Delhi"
+      },
+      "foundingDate": "2020",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": "50-100"
+      },
+      "industry": "Gaming and Entertainment",
+      "keywords": "esports, gaming, tournaments, café partnership, business investment"
+    }
+    </script>
+    
+    <!-- Schema.org Structured Data for Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Gaming Café Partnership Program",
+      "description": "Comprehensive gaming café partnership and investment program offering business support, marketing assistance, and technical guidance for gaming entrepreneurs in India.",
+      "provider": {
+        "@id": "https://colabesports.com/#organization"
+      },
+      "serviceType": "Business Partnership and Investment Services",
+      "category": "Gaming Business Development",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Gaming Café Owners, Business Investors, Entrepreneurs"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Seed Investment Partnership",
+          "description": "₹25-50 Lakhs investment opportunity for new gaming café development",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "25-50",
+            "priceCurrency": "INR",
+            "unitText": "Lakhs"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "name": "Growth Investment Partnership",
+          "description": "₹50 Lakhs - 1 Crore investment for expanding gaming café operations",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "50-100",
+            "priceCurrency": "INR",
+            "unitText": "Lakhs"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Strategic Investment Partnership", 
+          "description": "₹1+ Crore strategic investment for large-scale gaming café networks",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "100+",
+            "priceCurrency": "INR",
+            "unitText": "Lakhs"
+          }
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Partnership Services",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Business Development Support"
+          },
+          {
+            "@type": "Service", 
+            "name": "Marketing and Branding Assistance"
+          },
+          {
+            "@type": "Service",
+            "name": "Technical Setup and Training"
+          },
+          {
+            "@type": "Service",
+            "name": "Ongoing Operational Support"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Schema.org Structured Data for WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Gaming Café Partnership Registration Form",
+      "description": "Online application form for gaming café partnership and investment opportunities with ColabEsports",
+      "url": "https://colabesports.com/cafe-partnership.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "permissions": "No special permissions required",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR",
+        "description": "Free registration for partnership program"
+      },
+      "featureList": [
+        "Investment Application Submission",
+        "Document Upload Capability", 
+        "Business Information Collection",
+        "Automated Email Processing",
+        "Application Status Tracking"
+      ],
+      "screenshot": "https://colabesports.com/assets/img/partnership/partnership-form-screenshot.jpg"
+    }
+    </script>
+    
+    <!-- Schema.org Structured Data for Business Event -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BusinessEvent",
+      "name": "ColabEsports Gaming Café Partnership Program 2024",
+      "description": "Nationwide gaming café partnership and investment program launching across India with comprehensive business support and development opportunities.",
+      "startDate": "2024-01-01",
+      "endDate": "2024-12-31",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://colabesports.com/cafe-partnership.html"
+      },
+      "organizer": {
+        "@id": "https://colabesports.com/#organization"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Gaming Café Owners and Business Investors"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "Partnership Registration",
+        "price": "0",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01",
+        "validThrough": "2024-12-31"
+      }
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
