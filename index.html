@@ -32,12 +32,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#DF2A00">
   
-  <!-- Performance Optimizations -->
-  <link rel="preconnect" href="https://cdn.shopify.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://cdn.shopify.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  
   <!-- Canonical URL -->
   <link rel="canonical" href="https://colabesports.com/">
 
@@ -155,11 +149,23 @@
   <!--==============================
 	    All CSS File
 	============================== -->
-  <!-- Combined and minified CSS -->
-  <link rel="stylesheet" href="assets/css/bundle.min.css">
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Fontawesome Icon -->
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+  <!-- Slick Slider -->
+  <link rel="stylesheet" href="assets/css/slick.min.css">
+  <!-- Animation CSS -->
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+ <!-- Custom Cursor CSS -->
+ <link rel="stylesheet" href="assets/css/custom-cursor.min.css">
+  
+  <!-- Theme Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+	<!-- auth welcome modal CSS -->
+  <link rel="stylesheet" href="assets/css/auth.css">
   <style>
   body{
     background-color: #000000;
@@ -4010,19 +4016,40 @@ margin-left: 70px;
   <!--==============================
         All Js File
     ============================== -->
-  <!-- Optimized and bundled JavaScript -->
-  <script src="assets/js/bundle.min.js" defer></script>
-  <script>
-    // Initialize the application when the DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-      initApp().then(() => {
-        // Initialize app-specific scripts
-        if (window.initCustomCursor) initCustomCursor();
-        if (window.initAuth) initAuth();
-        if (window.initProfileSync) initProfileSync();
-      });
-    });
-  </script>
+  <!-- Jquery -->
+  <script src="assets/js/vendor/jquery-7.1.1.slim.min.js"></script>
+  <!-- Slick Slider -->
+  <script src="assets/js/slick.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- WOW.js Animation -->
+  <script src="assets/js/wow.min.js"></script>
+  <!-- Magnific Popup -->
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- Image Loaded -->
+  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+  <!-- Isotope Filter -->
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <!-- Gsap -->
+  <script src="assets/js/gsap.min.js"></script>
+  <!-- ScrollTrigger -->
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <!-- Gsap ScrollTo Plugin -->
+  <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+  <!-- Lenis Scroll -->
+  <script src="assets/js/lenis.min.js"></script>
+  <!-- Split Text -->
+  <script src="assets/js/SplitText.js"></script>
+  <!-- Marquee -->
+  <script src="assets/js/marquee.js"></script>
+  <!-- Custom Cursor -->
+  <script src="assets/js/custom-cursor.js"></script>
+  <!-- Main Js File -->
+  <script src="assets/js/main.js"></script>
+	<!-- script for login/signup-->
+ <script src="assets/js/auth.js"></script>
+ <!-- Profile Synchronization -->
+ <script src="assets/js/profile-sync.js"></script>
 
 
 
