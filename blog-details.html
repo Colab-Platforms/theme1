@@ -167,78 +167,20 @@
     });
   </script>
 
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="https://theme1-ecru.vercel.app/assets/css/style.css" as="style">
-  <link rel="preload" href="https://theme1-ecru.vercel.app/assets/css/fontawesome.min.css" as="style">
-  
-  <!-- CSS links with absolute URLs -->
-  <link rel="stylesheet" href="https://theme1-ecru.vercel.app/assets/css/style.css">
-  <link rel="stylesheet" href="https://theme1-ecru.vercel.app/assets/css/fontawesome.min.css">
+  <!-- Optimized CSS Loading -->
+  <link rel="preload" href="https://theme1-ecru.vercel.app/assets/css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://theme1-ecru.vercel.app/assets/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://theme1-ecru.vercel.app/assets/css/style.min.css">
+    <link rel="stylesheet" href="https://theme1-ecru.vercel.app/assets/css/fontawesome.min.css">
+  </noscript>
+  <script>
+    // Efficient CSS loading
+    !function(e){"use strict";var t=function(t,n,r){function o(e){if(i.body)return e();setTimeout(function(){o(e)})}function a(){d.addEventListener&&d.removeEventListener("load",a),d.media=r||"all"}var l,i=e.document,d=i.createElement("link");if(n)l=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;l=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){l.parentNode.insertBefore(d,n?l:l.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",a),d.onloadcssdefined=f,f(a),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+  </script>
   
   <!-- Critical CSS inline for faster page load -->
-  <style>
-    body { background: #000000; color: #fff; font-family: 'Poppins', sans-serif; }
-    .blog-details-container { max-width: 800px; margin: 40px auto; background: #141414; border-radius: 16px; box-shadow: 0 8px 32px #0005; padding: 32px 24px; }
-    .blog-details-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
-    .blog-details-title { font-size: 2.2rem; color: #ffa700; margin-bottom: 12px; }
-    .seo-heading { display: none; }
-    .blog-details-meta { color: #aaa; margin-bottom: 18px; }
-    .blog-details-content { font-size: 1.15rem; line-height: 1.7; color: #fff; }
-    .blog-details-share { margin-top: 32px; }
-    .blog-details-share a { color: #ffa700; margin-right: 12px; font-size: 1.3em; }
-    
-    /* Related Content Styles */
-    .blog-related-content {
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .blog-related-content h3 {
-      color: #ffa700;
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-    }
-    .blog-related-content h4 {
-      color: #fff;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-    .related-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-    .internal-links ul, .external-links ul {
-      list-style: none;
-      padding: 0;
-    }
-    .internal-links li, .external-links li {
-      margin-bottom: 12px;
-    }
-    .internal-links a, .external-links a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      display: inline-block;
-      position: relative;
-      padding-left: 20px;
-    }
-    .internal-links a:before, .external-links a:before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: #ffa700;
-    }
-    .internal-links a:hover, .external-links a:hover {
-      color: #ffa700;
-    }
-    @media (max-width: 768px) {
-      .related-links {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-    }
-  </style>
+  <style>body{background:#000;color:#fff;font-family:Poppins,sans-serif}.blog-details-container{max-width:800px;margin:40px auto;background:#141414;border-radius:16px;box-shadow:0 8px 32px #0005;padding:32px 24px}.blog-details-image{width:100%;max-height:400px;object-fit:cover;border-radius:12px;margin-bottom:24px}.blog-details-title{font-size:2.2rem;color:#ffa700;margin-bottom:12px}.seo-heading{display:none}.blog-details-meta{color:#aaa;margin-bottom:18px}.blog-details-content{font-size:1.15rem;line-height:1.7;color:#fff}.blog-details-share{margin-top:32px}.blog-details-share a{color:#ffa700;margin-right:12px;font-size:1.3em}.blog-related-content{margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}.blog-related-content h3{color:#ffa700;font-size:1.8rem;margin-bottom:24px}.blog-related-content h4{color:#fff;font-size:1.4rem;margin-bottom:16px}.related-links{display:grid;grid-template-columns:1fr 1fr;gap:32px}.internal-links ul,.external-links ul{list-style:none;padding:0}.internal-links li,.external-links li{margin-bottom:12px}.internal-links a,.external-links a{color:#fff;text-decoration:none;transition:color .3s ease;display:inline-block;position:relative;padding-left:20px}.internal-links a:before,.external-links a:before{content:'→';position:absolute;left:0;color:#ffa700}.internal-links a:hover,.external-links a:hover{color:#ffa700}@media (max-width:768px){.related-links{grid-template-columns:1fr;gap:24px}}</style>
 </head>
 <body>
   <div class="blog-details-container" id="blogDetailsContainer">
