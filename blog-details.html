@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Read detailed esports insights, gaming strategies, and tournament updates on ColabEsports. Expert analysis of CS2, Valorant, BGMI, and more Indian esports content.">
-  <meta name="keywords" content="esports blog, gaming insights, tournament analysis, CS2 strategies, Valorant tips, BGMI guides, Indian esports, ColabEsports blog">
+ <meta name="description" content="Get expert esports insights, gaming strategies, and CS2,  updates on ColabEsports – India’s top competitive gaming blog.">
+  <meta name="keywords" content="esports blog, gaming insights, tournament analysis, CS2 strat Indian esports, ColabEsports blog">
   <meta name="author" content="ColabEsports">
   <meta name="robots" content="index, follow">
 
@@ -173,6 +173,58 @@
     .blog-details-content { font-size: 1.15rem; line-height: 1.7; color: #fff; }
     .blog-details-share { margin-top: 32px; }
     .blog-details-share a { color: #ffa700; margin-right: 12px; font-size: 1.3em; }
+    
+    /* Related Content Styles */
+    .blog-related-content {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .blog-related-content h3 {
+      color: #ffa700;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+    .blog-related-content h4 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .related-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .internal-links ul, .external-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .internal-links li, .external-links li {
+      margin-bottom: 12px;
+    }
+    .internal-links a, .external-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: inline-block;
+      position: relative;
+      padding-left: 20px;
+    }
+    .internal-links a:before, .external-links a:before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #ffa700;
+    }
+    .internal-links a:hover, .external-links a:hover {
+      color: #ffa700;
+    }
+    @media (max-width: 768px) {
+      .related-links {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -238,11 +290,40 @@
           </div>
           <h2 class="blog-details-title">${escapeHTML(blog.title)}</h2>
           <div class="blog-details-content">${contentHtml}</div>
+          
+          <!-- Related Content Section -->
+          <div class="blog-related-content">
+            <h3>Explore More Gaming Content</h3>
+            <div class="related-links">
+              <!-- Internal Links -->
+              <div class="internal-links">
+                <h4>More from ColabEsports</h4>
+                <ul>
+                  <li><a href="/tournaments.html">Browse Upcoming Tournaments</a></li>
+                  <li><a href="/team.html">Meet Our Pro Teams</a></li>
+                  <li><a href="/how-to-play.html">Gaming Guides & Tutorials</a></li>
+                  <li><a href="/News.html">Latest Esports News</a></li>
+                  <li><a href="/leaderboard.html">Top Players & Rankings</a></li>
+                </ul>
+              </div>
+              <!-- External Links -->
+              <div class="external-links">
+                <h4>Additional Resources</h4>
+                <ul>
+                  <li><a href="https://blog.counter-strike.net/" target="_blank" rel="noopener">Official CS2 Blog</a></li>
+                  <li><a href="https://playvalorant.com/en-us/news/" target="_blank" rel="noopener">Valorant Updates</a></li>
+                  <li><a href="https://esports.battlegrounds.pubg.com/" target="_blank" rel="noopener">BGMI Esports Hub</a></li>
+                  <li><a href="https://www.hltv.org/" target="_blank" rel="noopener">HLTV Tournament Coverage</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <div class="blog-details-share">
             <span>Share:</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
           </div>
         `;
       } catch (err) {
