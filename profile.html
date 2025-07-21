@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ColabEsports Profile Dashboard | Track CS2 Tournaments & Esports Achievements</title>
+  <title>ColabEsports Profile & Tournaments</title>
+  
   <!-- Primary Meta Tags -->
-  <meta name="description" content="Access your ColabEsports profile to track CS2 tournaments, manage achievements, and customize your esports gaming experience.">
-  <meta name="keywords" content="ColabEsports profile, gaming profile dashboard, CS2 tournament stats, esports achievements, gaming history, player dashboard, competitive tournaments">
+  <meta name="description" content="Manage your ColabEsports profile, view tournament history, track achievements, and customize your gaming preferences for CS2 tournaments and competitions.">
+  <meta name="keywords" content="ColabEsports profile, gaming profile, CS2 tournament stats, player dashboard, esports achievements, gaming history, player rankings">
   <meta name="author" content="ColabEsports">
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colabesports.com/profile.html">
-  <meta property="og:title" content="ColabEsports Profile Dashboard | Track CS2 Tournaments & Esports Achievements">
-  <meta property="og:description" content="Access your ColabEsports profile to track CS2 tournaments, manage achievements, and customize your esports gaming experience.">
+  <meta property="og:title" content="Player Profile Dashboard | ColabEsports">
+  <meta property="og:description" content="Manage your ColabEsports profile, view tournament history, track achievements, and customize your gaming preferences for CS2 tournaments and competitions.">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,8 +25,8 @@
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://colabesports.com/profile.html">
-  <meta property="twitter:title" content="ColabEsports Profile Dashboard | Track CS2 Tournaments & Esports Achievements">
-  <meta property="twitter:description" content="Manage your ColabEsports gaming profile dashboard, view CS2 tournament history, track esports achievements, and customize your gaming preferences for competitive tournaments.">
+  <meta property="twitter:title" content="Player Profile Dashboard | ColabEsports">
+  <meta property="twitter:description" content="Manage your ColabEsports profile, view tournament history, track achievements, and customize your gaming preferences.">
   <meta property="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
   <meta name="twitter:site" content="@colabesports">
   <meta name="twitter:creator" content="@colabesports">
@@ -62,11 +63,9 @@
   </script>
   
   <link rel="canonical" href="https://colabesports.com/profile.html">
-  <!-- Use minified production version of Tailwind CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Use minified CSS for better performance -->
-  <link rel="stylesheet" href="assets/css/profile.min.css">
+  <link rel="stylesheet" href="assets/css/profile.css">
 
 
    
@@ -231,7 +230,6 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width:25vw;
-            margin-top: 60px;
         }
         
         .card:hover {
@@ -339,8 +337,8 @@
         <img id="bannerAvatar" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ebd26401-474d-4ba9-81ca-2806faf6d550.png" alt="Profile avatar silhouette with sunset gradient background, white border" class="w-full h-full object-cover" data-user-avatar onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8204ca7b-e98f-4871-ba18-a8002bffc8b3.png'"/>
       </div>
 
-      <div1class="flex-shrink max-w-xl space-y-2">
-        <h1 id="profileEmailBanner" class="text-xl font-bold text-white">Loading...</h1>
+      <div class="flex-shrink max-w-xl space-y-2">
+        <h2 id="profileEmailBanner" class="text-xl font-bold text-white">Loading...</h2>
         <p class="text-white-800" id="profileNickname">In Game Name: Loading...</p>
         <p class="text-white-800" id="profileCountry">Country: Loading...</p>
         <p class="text-white-800" id="profileJoinDate">Date of joining: Loading...</p>
@@ -457,7 +455,7 @@
                     
                 </div>
                            <button id="openSocialModalBtn" 
-  class="bg-[#FFA700] hover:bg-[#DF2A00] text-gray-900 py-1 px-4 rounded text-sm font-semibold transition " style= "margin-left: 150px; " 
+  class="bg-[#FFA700] hover:bg-[#DF2A00] text-gray-900 py-1 px-4 rounded text-sm font-semibold transition" 
   class="profile-content">
   Add Social Media
 </button>
