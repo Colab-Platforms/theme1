@@ -4,8 +4,143 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ColabEsports Profile & Tournaments</title>
+  <!-- SEO Meta Tags -->
+<meta name="description" content="Manage your ColabEsports CS2 gaming profile, track esports achievements, view tournament stats, connect accounts, and customize your competitive gaming dashboard.">
+<meta name="keywords" content="ColabEsports profile, CS2 esports, gaming dashboard, esports profile, tournament stats, gaming achievements, connect Steam, CS2 tournaments, esports India, player dashboard">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- OpenGraph Meta Tags -->
+<meta property="og:title" content="Gaming Profile - ColabEsports Platform">
+<meta property="og:description" content="View and manage your gaming profile on ColabEsports. Check your tournament stats, achievements, and gaming history.">
+<meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+<meta property="og:url" content="https://colabesports.com/profile.html">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="ColabEsports">
+<meta property="og:locale" content="en_IN">
+<meta property="profile:username" content="">
+<meta property="profile:first_name" content="">
+<meta property="profile:last_name" content="">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@colabesports">
+<meta name="twitter:title" content="Gaming Profile - ColabEsports Platform">
+<meta name="twitter:description" content="View and manage your gaming profile on ColabEsports. Check your tournament stats, achievements, and gaming history.">
+<meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614">
+
+<!-- Schema.org Profile Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "ColabEsports Gamer",
+    "description": "Professional gamer profile and achievements on ColabEsports gaming platform",
+    "memberOf": {
+      "@type": "Organization",
+      "name": "ColabEsports",
+      "url": "https://colabesports.com"
+    },
+    "url": "https://colabesports.com/profile.html",
+    "image": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/avtar.jpg?v=1750160660"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://colabesports.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Profile",
+        "item": "https://colabesports.com/profile.html"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- Gaming Profile Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "additionalType": "http://schema.org/Player",
+  "name": "ColabEsports Gamer",
+  "description": "Competitive CS2 player on ColabEsports platform",
+  "mainEntityOfPage": {
+    "@type": "ProfilePage",
+    "@id": "https://colabesports.com/profile.html"
+  },
+  "potentialAction": {
+    "@type": "ViewAction",
+    "target": "https://colabesports.com/update.html"
+  },
+  "memberOf": {
+    "@type": "SportsOrganization",
+    "name": "ColabEsports",
+    "url": "https://colabesports.com",
+    "logo": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614"
+  }
+}
+</script>
+
+<!-- Sports Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "ColabEsports",
+  "description": "Leading esports platform in India for competitive gaming and tournaments",
+  "url": "https://colabesports.com",
+  "logo": "https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Coloab_Esports_log-08.png?v=1749895614",
+  "sameAs": [
+    "https://twitter.com/colabesports",
+    "https://facebook.com/colabesports",
+    "https://instagram.com/colabesports"
+  ],
+  "sport": ["Esports", "Counter-Strike 2", "Competitive Gaming"],
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    }
+  }
+}
+</script>
+
+<!-- Gamification Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Gaming Achievements",
+  "itemListElement": [
+    {
+      "@type": "Thing",
+      "name": "Tournament Participation",
+      "description": "Track record of CS2 tournament participation"
+    },
+    {
+      "@type": "Thing",
+      "name": "Gaming Statistics",
+      "description": "Personal gaming performance metrics and history"
+    },
+    {
+      "@type": "Thing",
+      "name": "Achievements",
+      "description": "Gaming milestones and accomplishments"
+    }
+  ]
+}
+</script>
   <style>
 
 
@@ -928,13 +1063,14 @@
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-gray-100">
     <!-- Profile Banner with upload -->
-    <section class="profile-banner relative rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start gap-6 shadow-lg">
+    <section class="profile-banner relative rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start gap-6 shadow-lg"
+     style="background-image: url('https://cdn.shopify.com/s/files/1/0636/5226/6115/files/Web_Banner_CES.jpg?v=1752738030'); background-size: cover; ">
       <div class="relative w-32 h-32 border-4 border-white rounded-full overflow-hidden flex-shrink-0 shadow-lg">
         <img id="bannerAvatar" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ebd26401-474d-4ba9-81ca-2806faf6d550.png" alt="Profile avatar silhouette with sunset gradient background, white border" class="w-full h-full object-cover" data-user-avatar onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8204ca7b-e98f-4871-ba18-a8002bffc8b3.png'"/>
       </div>
 
       <div class="flex-shrink max-w-xl space-y-2">
-        <h2 id="profileEmailBanner" class="text-xl font-bold text-white">Loading...</h2>
+        <h1 id="profileEmailBanner" class="text-xl font-bold text-white">Loading...</h1>
         <p class="text-white-800" id="profileNickname">In Game Name: Loading...</p>
         <p class="text-white-800" id="profileCountry">Country: Loading...</p>
         <p class="text-white-800" id="profileJoinDate">Date of joining: Loading...</p>
@@ -1082,9 +1218,9 @@
         <div>
           <select id="filterTeams" class="bg-gray-700 text-[#141414] px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400 hover:bg-white">
             <option value="all" selected>All Games</option>
-            <option value="bgmi">BGMI</option>
+            <!-- <option value="bgmi">BGMI</option> -->
             <option value="cs2">CS-2</option>
-            <option value="valorant">Valorant</option>
+            <!-- <option value="valorant">Valorant</option> -->
           </select>
         </div>
       </div>
@@ -1575,7 +1711,6 @@ const profileEmailElem = document.getElementById("profileEmail")
 const profileEmailBanner = document.getElementById("profileEmailBanner")
 const profileIcon = document.getElementById("profileIcon")
 const bannerAvatar = document.getElementById("bannerAvatar")
-const preloader = document.getElementById("preloader")
 const generalTab = document.getElementById("generalTab")
 const teamsTab = document.getElementById("teamsTab")
 const tabButtons = document.querySelectorAll(".tab-btn")
@@ -2489,14 +2624,6 @@ document.addEventListener("DOMContentLoaded", init)
 
   </script>
 
-
-
-
-
-
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const openTeamModalBtn = document.getElementById('openTeamModalBtn');
@@ -2613,7 +2740,6 @@ function renderTeams() {
   renderTeams();
 });
 </script>
-
 
 <!-- Modal Scoial Links -->
 <script>
