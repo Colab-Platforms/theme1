@@ -18296,7 +18296,7 @@ Version: 1.0.0
         padding: 12px 20px;
         border: none;
         outline: none;
-        background-color: transparent;
+        background-color: #000000;
       }
 
       .email-subscription__input::placeholder {
