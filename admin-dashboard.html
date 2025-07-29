@@ -3,391 +3,330 @@
 <head>
   <meta charset="UTF-8" />
   <title>Admin CMS - Blog</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-  body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-  }
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    h2, h3 {
+      text-align: center;
+      color: #ffa500;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 6px 2px;
+      font-size: 0.95em;
+      color: #ccc;
+    }
+    input, textarea {
+      width: 100%;
+      background: #2a2a2a;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 5px #df2a00;
+      border-color: #df2a00;
+    }
+    
+    #editor-container {
+      background: #fff;
+      border-radius: 6px;
+      color: black;
+      min-height: 250px;
+    }
+    .ql-toolbar {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background: #2a2a2a;
+      border-color: #444 !important;
+    }
+    .ql-container {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-color: #444 !important;
+      font-size: 16px;
+    }
+    .ql-snow .ql-stroke { stroke: #ccc; }
+    .ql-snow .ql-picker-label { color: #ccc; }
 
-  .container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-  }
-
-  h2, h3 {
-    text-align: center;
-    color: #ffa500;
-    margin-bottom: 30px;
-  }
-
-  label {
-    display: block;
-    margin: 8px 0 6px 2px;
-    font-size: 0.95em;
-    color: #ccc;
-  }
-
-  input, textarea {
-    width: 100%;
-    background: #2a2a2a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  input:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 0 5px #df2a00;
-  }
-
-  #detailLink {
-    transition: width 0.3s ease;
-  }
-
-  #detailLink:focus {
-    width: 100% !important;
-    max-width: 100%;
-    background: #2d2d2d;
-  }
-
-  button {
-    background-color: #df2a00;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-  }
-
-  button:hover {
-    background-color: #c12500;
-  }
-
-  table {
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-    margin-top: 30px;
-    background: #1c1c1c;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  th, td {
-    padding: 14px 15px;
-    border-bottom: 1px solid #2f2f2f;
-  }
-
-  th {
-    color: #ffa700;
-    font-weight: 600;
-    background: #222;
-  }
-
-  td {
-    vertical-align: middle;
-  }
-
-  .action-btn {
-    background: none;
-    border: none;
-    color: #ffe082;
-    margin-right: 10px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-
-  .action-btn:hover {
-    color: #fff;
-  }
-
-  .action-btn.delete {
-    color: #ff5252;
-  }
-
-  .action-btn.delete:hover {
-    color: #fff;
-  }
-</style>
+    button {
+      background-color: #df2a00;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #c12500;
+    }
+    table {
+      width: 100%;
+      max-width: 1000px;
+      margin: 30px auto;
+      text-align: left;
+      border-collapse: collapse;
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 14px 15px;
+      border-bottom: 1px solid #2f2f2f;
+      vertical-align: middle;
+    }
+    th {
+      color: #ffa700;
+      font-weight: 600;
+      background: #222;
+    }
+    .action-btn {
+        background: #333;
+        border: 1px solid #555;
+        color: #ffe082;
+        margin-right: 10px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .action-btn.delete-btn { color: #ff5252; }
+    .action-btn:hover { background: #444; color: #fff; }
+  </style>
 </head>
 <body>
   <div class="container">
     <h2>Admin Login</h2>
-
     <div id="loginSection">
       <input type="email" id="adminEmail" placeholder="Email" />
       <input type="password" id="adminPassword" placeholder="Password" />
-      <button onclick="login()">Login</button>
+      <button id="loginBtn">Login</button>
     </div>
-
     <div id="blogFormSection" style="display:none;">
-      <h2>Create New Blog</h2>
-      <input id="title" type="text" placeholder="Blog Title" required />
-      <input id="author" type="text" placeholder="Author" required />
-      <input id="imageUrl" type="url" placeholder="Blog Image URL" required />
-      <textarea id="description" placeholder="Short Description" required></textarea>
-      <textarea id="detailLink" type="text" placeholder="Blog Details"></textarea>
-      
-      <button id="postBtn" onclick="postBlog()">Post Blog</button>
-      <p id="postStatus"></p>
+      <h2>Blog Content Manager</h2>
+      <label for="title">Blog Title</label>
+      <input id="title" type="text" placeholder="Enter the blog title" required />
+      <label for="author">Author</label>
+      <input id="author" type="text" placeholder="Enter the author's name" required />
+      <label for="imageUrl">Blog Image URL</label>
+      <input id="imageUrl" type="url" placeholder="https://example.com/image.jpg" required />
+      <label for="description">Short Description (for blog cards)</label>
+      <textarea id="description" placeholder="A brief summary for the blog list page" required></textarea>
+      <label for="editor-container">Full Blog Content</label>
+      <div id="editor-container"></div>
+      <button id="postBtn">Post Blog</button>
     </div>
   </div>
-<h3 style="margin-top: 40px;">Your Blog Posts</h3>
-<table border="1" width="100%" id="blogTable" style="color: white; text-align: left; margin-top: 10px;">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody id="blogList"></tbody>
-</table>
+<div class="table-container" style="overflow-x: auto;">
+  <h3 style="margin-top: 40px;">Your Blog Posts</h3>
+  <table id="blogTable">
+    <thead>
+      <tr><th>Title</th><th>Author</th><th>Actions</th></tr>
+    </thead>
+    <tbody id="blogList"></tbody>
+  </table>
+</div>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
   <script type="module">
-  import {
-    auth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    db,
-    collection,
-    addDoc,
-    serverTimestamp
-  } from './assets/firebase/firebase.js';
+    // --- THE FIX IS HERE ---
+    // Import initialized services from your local config file
+    import { auth, db } from './assets/firebase/firebase.js';
 
-  import {
-  getDocs, doc, updateDoc, deleteDoc, query,         
-  orderBy       
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    // Import AUTH functions directly from the Firebase Auth SDK
+    import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    
+    // Import FIRESTORE functions directly from the Firebase Firestore SDK
+    import { 
+      collection, addDoc, serverTimestamp, getDocs, doc, 
+      getDoc as getSingleDoc, updateDoc, deleteDoc, query, orderBy 
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  // ✅ Make login function global
-  window.login = function () {
-    const email = document.getElementById("adminEmail").value;
-    const password = document.getElementById("adminPassword").value;
+    // --- End of Fix ---
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        alert("✅ Login success");
-      })
-      .catch((error) => {
-        alert("❌ " + error.message);
-      });
-  };
+    let quill;
 
-  // ✅ Monitor auth state
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      document.getElementById("loginSection").style.display = "none";
-      document.getElementById("blogFormSection").style.display = "block";
-    } else {
-      document.getElementById("loginSection").style.display = "block";
-      document.getElementById("blogFormSection").style.display = "none";
-    }
-  });
-
-  // ✅ Make postBlog function global
-  window.postBlog = async function () {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const imageUrl = document.getElementById("imageUrl").value;
-    const description = document.getElementById("description").value;
-    const detailLink = document.getElementById("detailLink").value || "#";
-
-    if (!title || !author || !imageUrl || !description) {
-      alert("Please fill all fields");
-      return;
+    function initializeEditor() {
+      const toolbarOptions = [
+        [{ 'header': [1, 2, 3, false] }], ['bold', 'italic'],
+        [{ 'list': 'bullet' }], ['link'], ['clean']
+      ];
+      quill = new Quill('#editor-container', { modules: { toolbar: toolbarOptions }, theme: 'snow' });
     }
 
-    try {
-      await addDoc(collection(db, "blogs"), {
-        title,
-        author,
-        imageUrl,
-        description,
-        detailLink,
-        createdAt: serverTimestamp(),
-      });
-
-      alert("✅ Blog posted successfully!");
-      document.getElementById("title").value = "";
-      document.getElementById("author").value = "";
-      document.getElementById("imageUrl").value = "";
-      document.getElementById("description").value = "";
-      document.getElementById("detailLink").value = "";
-    } catch (err) {
-      alert("❌ Failed to post blog: " + err.message);
-    }
-  };
-
-
-  async function loadBlogsForAdmin() {
-  const blogListElem = document.getElementById('blogList');
-  blogListElem.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
-
-  const blogsRef = collection(db, 'blogs');
-  const q = query(blogsRef, orderBy("createdAt", "desc"));
-  const snapshot = await getDocs(q);
-
-  if (snapshot.empty) {
-    blogListElem.innerHTML = '<tr><td colspan="3">No blog posts</td></tr>';
-    return;
-  }
-
-  let rows = "";
-
-  snapshot.forEach((docSnap) => {
-    const blog = docSnap.data();
-    const id = docSnap.id;
-
-    function escapeString(str) {
-  return String(str || '')
-    .replace(/\\/g, "\\\\")     // escape backslashes
-    .replace(/'/g, "\\'")
-    .replace(/"/g, '\\"')
-    .replace(/\n/g, "\\n")      // escape newlines
-    .replace(/\r/g, "");        // (optional) remove carriage returns
-}
-
-   const safeTitle = escapeString(blog.title);
-const safeAuthor = escapeString(blog.author);
-const safeImageUrl = escapeString(blog.imageUrl);
-const safeDescription = escapeString(blog.description);
-const safeDetailLink = escapeString(blog.detailLink || '');
-
-rows += `
-  <tr>
-    <td>${escapeHTML(blog.title)}</td>
-    <td>${escapeHTML(blog.author)}</td>
-    <td>
-      <button class="edit-btn"
-        data-id="${id}"
-        data-title="${escapeHTML(blog.title)}"
-        data-author="${escapeHTML(blog.author)}"
-        data-imageurl="${escapeHTML(blog.imageUrl)}"
-        data-description="${escapeHTML(blog.description)}"
-        data-detaillink="${escapeHTML(blog.detailLink || "")}"
-      >✏️ Edit</button>
-      <button onclick="deleteBlog('${id}')">🗑️ Delete</button>
-    </td>
-  </tr>
-`;
-  });
-
-  blogListElem.innerHTML = rows;
-}
-
-document.getElementById('blogList').addEventListener('click', function(e) {
-  if (e.target.classList.contains('edit-btn')) {
-    const btn = e.target;
-    editBlog(
-      btn.dataset.id,
-      btn.dataset.title,
-      btn.dataset.author,
-      btn.dataset.imageurl,
-      btn.dataset.description,
-      btn.dataset.detaillink
-    );
-  }
-});
-
-function escapeHTML(str) {
-  return String(str || '')
-    .replace(/&/g, "&amp;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-// DELETE BLOG
-window.deleteBlog = async function (id) {
-  if (!confirm("Delete this blog post?")) return;
-  try {
-    await deleteDoc(doc(db, "blogs", id));
-    alert("Blog deleted!");
-    loadBlogsForAdmin();
-  } catch (err) {
-    alert("Error deleting blog: " + err.message);
-  }
-}
-
-// EDIT BLOG
-window.editBlog = function (id, title, author, imageUrl, description, detailLink) {
-  document.getElementById("title").value = title;
-  document.getElementById("author").value = author;
-  document.getElementById("imageUrl").value = imageUrl;
-  document.getElementById("description").value = description;
-  document.getElementById("detailLink").value = detailLink;
-
-  const postBtn = document.getElementById("postBtn");
-  postBtn.innerText = "Update Blog";
-  postBtn.onclick = function () {
-    updateBlog(id);
-  };
-};
-
-// UPDATE BLOG
-window.updateBlog = async function (id) {
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const imageUrl = document.getElementById("imageUrl").value;
-  const description = document.getElementById("description").value;
-  const detailLink = document.getElementById("detailLink").value;
-
-  const blogRef = doc(db, "blogs", id);
-  
-  try {
-    await updateDoc(blogRef, {
-      title,
-      author,
-      imageUrl,
-      description,
-      detailLink
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const email = document.getElementById("adminEmail").value;
+      const password = document.getElementById("adminPassword").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => alert("✅ Login success"))
+        .catch((error) => alert("❌ " + error.message));
     });
 
-    alert("✅ Blog updated");
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("blogFormSection").style.display = "block";
+        document.querySelector(".table-container").style.display = "block";
+        if (!quill) { initializeEditor(); }
+        loadBlogsForAdmin();
+      } else {
+        document.getElementById("loginSection").style.display = "block";
+        document.getElementById("blogFormSection").style.display = "none";
+        document.querySelector(".table-container").style.display = "none";
+      }
+    });
+    
+    const postBtn = document.getElementById('postBtn');
+    postBtn.addEventListener('click', handleFormSubmit);
 
-    // ✅ Reset form and button
-    const postBtn = document.getElementById("postBtn");
-    postBtn.innerText = "Post Blog";
-    postBtn.onclick = postBlog;
+    async function handleFormSubmit() {
+        const blogId = postBtn.dataset.editingId;
+        if (blogId) {
+            await updateBlog(blogId);
+        } else {
+            await postNewBlog();
+        }
+    }
 
-    document.getElementById("title").value = "";
-    document.getElementById("author").value = "";
-    document.getElementById("imageUrl").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("detailLink").value = "";
+    async function postNewBlog() {
+      const title = document.getElementById("title").value;
+      const author = document.getElementById("author").value;
+      const imageUrl = document.getElementById("imageUrl").value;
+      const description = document.getElementById("description").value;
+      const detailContent = quill.root.innerHTML;
 
-  
+      if (!title || !author || !imageUrl || !description || detailContent === '<p><br></p>') {
+        alert("Please fill all fields, including the full blog content.");
+        return;
+      }
 
-  } catch (err) {
-    alert("❌ Failed to update blog: " + err.message);
-    console.error(err);
-  }
-};
+      try {
+        await addDoc(collection(db, "blogs"), {
+          title, author, imageUrl, description, detailContent,
+          createdAt: serverTimestamp(),
+        });
+        alert("✅ Blog posted successfully!");
+        resetForm();
+        loadBlogsForAdmin();
+      } catch (err) { alert("❌ Failed to post blog: " + err.message); }
+    };
+    
+    async function loadBlogsForAdmin() {
+      const blogListElem = document.getElementById('blogList');
+      blogListElem.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
+      const q = query(collection(db, 'blogs'), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
 
-  loadBlogsForAdmin();
-</script>
+      if(snapshot.empty) {
+        blogListElem.innerHTML = '<tr><td colspan="3">No blog posts found.</td></tr>';
+        return;
+      }
+
+      blogListElem.innerHTML = snapshot.docs.map(docSnap => `
+        <tr>
+          <td>${escapeHTML(docSnap.data().title)}</td>
+          <td>${escapeHTML(docSnap.data().author)}</td>
+          <td>
+            <button class="action-btn edit-btn" data-id="${docSnap.id}">✏️ Edit</button>
+            <button class="action-btn delete-btn" data-id="${docSnap.id}">🗑️ Delete</button>
+          </td>
+        </tr>`).join('');
+    }
+    
+    async function loadBlogForEditing(id) {
+        const docRef = doc(db, 'blogs', id);
+        const docSnap = await getSingleDoc(docRef);
+        if (docSnap.exists()) {
+            const blogData = docSnap.data();
+            document.getElementById("title").value = blogData.title;
+            document.getElementById("author").value = blogData.author;
+            document.getElementById("imageUrl").value = blogData.imageUrl;
+            document.getElementById("description").value = blogData.description;
+            quill.root.innerHTML = blogData.detailContent || '';
+            postBtn.innerText = "Update Blog";
+            postBtn.dataset.editingId = id;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    async function updateBlog(id) {
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const imageUrl = document.getElementById("imageUrl").value;
+        const description = document.getElementById("description").value;
+        const detailContent = quill.root.innerHTML;
+
+        try {
+            const blogRef = doc(db, "blogs", id);
+            await updateDoc(blogRef, { title, author, imageUrl, description, detailContent });
+            alert("✅ Blog updated successfully!");
+            resetForm();
+            loadBlogsForAdmin();
+        } catch (err) { alert("❌ Failed to update blog: " + err.message); }
+    }
+
+    async function deleteBlog(id) {
+      if (!confirm("Are you sure you want to permanently delete this blog post?")) return;
+      try {
+        await deleteDoc(doc(db, "blogs", id));
+        alert("Blog deleted!");
+        loadBlogsForAdmin();
+      } catch (err) { alert("Error deleting blog: " + err.message); }
+    }
+
+    document.getElementById('blogList').addEventListener('click', async (e) => {
+      const target = e.target.closest('button');
+      if (!target) return;
+      
+      const id = target.dataset.id;
+      if (target.classList.contains('edit-btn')) { await loadBlogForEditing(id); }
+      if (target.classList.contains('delete-btn')) { await deleteBlog(id); }
+    });
+
+    function resetForm() {
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("imageUrl").value = "";
+        document.getElementById("description").value = "";
+        if (quill) { quill.setText(''); }
+        const postBtn = document.getElementById("postBtn");
+        postBtn.innerText = "Post Blog";
+        delete postBtn.dataset.editingId;
+    }
+    
+    function escapeHTML(str) {
+      const p = document.createElement("p");
+      p.textContent = str || '';
+      return p.innerHTML;
+    }
+  </script>
 </body>
 </html>
